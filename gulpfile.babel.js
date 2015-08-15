@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import handlebars from 'handlebars';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
+import rename from 'gulp-rename';
 import compileHandlebars from 'gulp-handlebars-html'
 import server from 'gulp-server-livereload';
 
@@ -36,7 +37,12 @@ gulp.task('templates:watch', () => {
 gulp.task('styles', () => {
   gulp.src(PATHS.styles)
     .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
+      .pipe(sass({
+        includePaths: [
+          'node_modules',
+          'node_modules/bootstrap-sass/assets/stylesheets'
+        ]
+      }).on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(PATHS.build));
 });

@@ -4,7 +4,9 @@
   "description": "",
   "main": "gulpfile.babel.js",
   "dependencies": {
-    "gulp": "^3.9.0"
+    "bootstrap-sass": "^3.3.5",
+    "gulp": "^3.9.0",
+    "normalize.css": "^3.0.3"
   },
   "devDependencies": {
     "babel": "^5.8.21",
