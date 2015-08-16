@@ -1,0 +1,36 @@
+.project-group {
+  margin-bottom: 100px;
+
+  h1 {
+    margin-bottom: 0;
+
+    .description {
+      display: inline-block;
+      margin-left: 20px;
+    }
+  }
+}
+
+.project {
+  border-top: 1px solid #4A4A4A;
+  border-bottom: none;
+  height: 107px;
+  overflow: hidden;
+  margin-top: 28px;
+  text-decoration: none;
+  display: block;
+  color: $gray-dark;
+
+  &:hover {
+    text-decoration: none;
+    border-color: $brand-primary;
+  }
+
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}

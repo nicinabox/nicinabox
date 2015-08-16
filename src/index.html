@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nic Aitch</title>
-  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="main.css">
+  {{> head}}
 </head>
 <body>
-  <div class="container">
+  <div id="root" class="container">
     <div class="row">
       <div class="col-sm-3">
         {{> aside}}
       </div>
 
       <div class="col-sm-8 col-sm-offset-1">
-        Projects
+        {{> project_group
+          title='Active Projects'
+          description='1 month'
+          set=active_projects }}
+
+        {{> project_group
+          title='Recent Projects'
+          description='6 months'
+          set=current_projects }}
+
+        {{> project_group
+          title='Recent Contributions'
+          description='12 months'
+          set=recent_contributions }}
+
+        {{> project_group
+          title='Retired Projects'
+          description='Not under active development'
+          set=legacy_projects }}
+
+        {{> footer }}
       </div>
     </div>
   </div>
