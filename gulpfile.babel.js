@@ -1,41 +1,51 @@
+import fs from 'fs';
+import { spawn } from 'child_process';
+import _ from 'lodash';
 import gulp from 'gulp';
-import handlebars from 'handlebars';
+import glob from 'glob';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
-import rename from 'gulp-rename';
-import compileHandlebars from 'gulp-handlebars-html'
+import handlebars from 'gulp-compile-handlebars'
 import server from 'gulp-server-livereload';
-
-var hbs = compileHandlebars(handlebars);
+import handlebarsHelpers from './lib/handlebars_helpers';
+import loadTemplateData from './lib/load_template_data';
+import { getRepos } from './lib/github';
 
 const PATHS = {
   src: './src',
   partialsDir: './src/partials',
   partials: './src/partials/**/*.hbs',
   templates: './src/**/*.html',
+  data: './data/*',
   styles: './src/styles/**/*.scss',
-  build: './build'
+  build: './build',
+  lib: './lib/*',
 };
 
-gulp.task('default', ['watch', 'serve']);
+gulp.task('default', ['compile', 'watch']);
 
-gulp.task('compile', ['templates', 'styles']);
+gulp.task('compile', ['repos', 'templates', 'styles']);
 
 gulp.task('templates', () => {
-  gulp.src(PATHS.templates)
-    .pipe(hbs({}, {
-      partialsDirectory: [PATHS.partialsDir]
+  var data = loadTemplateData();
+
+  return gulp.src(PATHS.templates)
+    .pipe(handlebars(data, {
+      batch: glob.sync(PATHS.partialsDir),
+      helpers: handlebarsHelpers
     }))
     .pipe(gulp.dest(PATHS.build))
 });
 
 gulp.task('templates:watch', () => {
+  gulp.watch(PATHS.lib, ['templates']);
   gulp.watch(PATHS.templates, ['templates']);
   gulp.watch(PATHS.partials, ['templates']);
+  gulp.watch(PATHS.data, ['templates']);
 });
 
 gulp.task('styles', () => {
-  gulp.src(PATHS.styles)
+  return gulp.src(PATHS.styles)
     .pipe(sourcemaps.init())
       .pipe(sass({
         includePaths: [
@@ -51,10 +61,21 @@ gulp.task('styles:watch', () => {
   gulp.watch(PATHS.styles, ['styles']);
 });
 
-gulp.task('watch', ['styles:watch', 'templates:watch']);
+gulp.task('watch', ['styles:watch', 'templates:watch', 'serve'], () => {
+  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
+});
+
+gulp.task('repos', (done) => {
+  getRepos(done);
+});
+
+gulp.task('gulp-reload', function() {
+  spawn('gulp', ['watch'], { stdio: 'inherit' });
+  process.exit();
+});
 
 gulp.task('serve', () => {
-  gulp.src(PATHS.build)
+  return gulp.src(PATHS.build)
     .pipe(server({
       livereload: true,
       open: true

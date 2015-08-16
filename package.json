@@ -5,23 +5,20 @@
   "main": "gulpfile.babel.js",
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
+    "github-api": "^0.10.6",
     "gulp": "^3.9.0",
-    "normalize.css": "^3.0.3"
+    "lodash": "^3.10.1"
   },
   "devDependencies": {
     "babel": "^5.8.21",
-    "connect": "^3.4.0",
+    "glob": "^5.0.14",
+    "gulp-compile-handlebars": "^0.5.0",
     "gulp-concat": "^2.6.0",
-    "gulp-declare": "^0.3.0",
-    "gulp-handlebars": "^4.0.0",
-    "gulp-handlebars-html": "0.0.2",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.0.4",
     "gulp-server-livereload": "^1.4.0",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-wrap": "^0.11.0",
-    "handlebars": "^3.0.3",
-    "serve-static": "^1.10.0"
+    "gulp-watch": "^4.3.4",
+    "moment": "^2.10.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
