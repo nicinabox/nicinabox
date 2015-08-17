@@ -33,9 +33,9 @@ try {
   console.log('No repo cache found.');
 }
 
-gulp.task('default', ['repos', 'compile', 'watch']);
+gulp.task('default', ['repos', 'build', 'watch']);
 
-gulp.task('compile', ['templates', 'styles']);
+gulp.task('build', ['templates', 'styles']);
 
 gulp.task('templates', () => {
   var data = loadTemplateData(repoData);
