@@ -26,12 +26,19 @@ const PATHS = {
   lib: './lib/*',
 };
 
+var repoData = [];
+try {
+  repoData = JSON.parse(fs.readFileSync('/tmp/repos.json').toString());
+} catch(e) {
+  console.log('No repo cache found.');
+}
+
 gulp.task('default', ['repos', 'compile', 'watch']);
 
 gulp.task('compile', ['templates', 'styles']);
 
 gulp.task('templates', () => {
-  var data = loadTemplateData();
+  var data = loadTemplateData(repoData);
 
   return gulp.src(PATHS.templates)
     .pipe(handlebars(data, {
@@ -70,7 +77,10 @@ gulp.task('watch', ['styles:watch', 'templates:watch', 'serve'], () => {
 });
 
 gulp.task('repos', (done) => {
-  getRepos(done);
+  getRepos((data) => {
+    repoData = data;
+    done();
+  });
 });
 
 gulp.task('minify', ['minify:html', 'minify:css']);
