@@ -27,7 +27,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
-    "deploy": "gulp compile && gulp deploy"
+    "deploy": "gulp compile && gulp deploy",
+    "update": "gulp repos && gulp compile && gulp deploy"
   },
   "author": "",
   "license": "ISC"
