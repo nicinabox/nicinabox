@@ -31,6 +31,6 @@
     "deploy": "gulp build && gulp deploy",
     "update": "gulp repos && gulp build && gulp deploy"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "nicinabox",
+  "license": "MIT"
 }
