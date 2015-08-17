@@ -1,6 +1,13 @@
 #aside {
   margin-bottom: 50px;
 
+  h1 {
+    a {
+      color: $gray-dark;
+      border: none;
+    }
+  }
+
   .description {
     margin-top: 40px;
   }
