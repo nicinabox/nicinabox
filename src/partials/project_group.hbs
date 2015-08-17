@@ -1,0 +1,19 @@
+{{#if set}}
+  <div class="project-group">
+    <h1>
+      {{title}}
+
+      <small class="text-muted description">
+        {{description}}
+      </small>
+    </h1>
+
+    <div class="row">
+      {{#each set}}
+        <div class="col-sm-4">
+          {{> project}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
