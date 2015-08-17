@@ -20,6 +20,7 @@ const PATHS = {
   partialsDir: './src/partials',
   partials: './src/partials/**/*.hbs',
   templates: './src/**/*.html',
+  images: './src/**/*.ico',
   data: './data/*',
   styles: './src/styles/**/*.scss',
   build: './build',
@@ -35,7 +36,7 @@ try {
 
 gulp.task('default', ['repos', 'build', 'watch']);
 
-gulp.task('build', ['templates', 'styles']);
+gulp.task('build', ['templates', 'images', 'styles']);
 
 gulp.task('templates', () => {
   var data = loadTemplateData(repoData);
@@ -53,6 +54,11 @@ gulp.task('templates:watch', () => {
   gulp.watch(PATHS.templates, ['templates']);
   gulp.watch(PATHS.partials, ['templates']);
   gulp.watch(PATHS.data, ['templates']);
+});
+
+gulp.task('images', () => {
+  return gulp.src(PATHS.images)
+    .pipe(gulp.dest(PATHS.build))
 });
 
 gulp.task('styles', () => {
