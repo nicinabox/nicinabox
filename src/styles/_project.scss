@@ -8,6 +8,14 @@
       display: inline-block;
       margin-left: 20px;
     }
+
+    @media screen and (max-width: $container-sm) {
+      .description {
+        display: block;
+        margin-top: 5px;
+        margin-left: 0;
+      }
+    }
   }
 }
 
