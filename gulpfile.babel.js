@@ -5,6 +5,10 @@ import gulp from 'gulp';
 import glob from 'glob';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
+import htmlmin from 'gulp-htmlmin';
+import cssmin from 'gulp-cssmin';
+import gzip from 'gulp-gzip';
+import s3 from 'gulp-s3';
 import handlebars from 'gulp-compile-handlebars'
 import server from 'gulp-server-livereload';
 import handlebarsHelpers from './lib/handlebars_helpers';
@@ -67,6 +71,42 @@ gulp.task('watch', ['styles:watch', 'templates:watch', 'serve'], () => {
 
 gulp.task('repos', (done) => {
   getRepos(done);
+});
+
+gulp.task('minify', ['minify:html', 'minify:css']);
+
+gulp.task('minify:html', () => {
+  return gulp.src('build/*.html')
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest(PATHS.build));
+});
+
+gulp.task('minify:css', () => {
+  return gulp.src('build/*.css')
+    .pipe(cssmin())
+    .pipe(gulp.dest(PATHS.build));
+});
+
+gulp.task('deploy', ['minify'], () => {
+  var aws = {
+    key: process.env.S3_KEY,
+    secret: process.env.S3_SECRET,
+    bucket: process.env.S3_BUCKET,
+    region: 'us-east-1'
+  };
+
+  var options = {
+    gzippedOnly: true,
+    headers: {
+      'Cache-Control': 'max-age=315360000, no-transform, public'
+    }
+  };
+
+  return gulp.src('build/**')
+    .pipe(gzip())
+    .pipe(s3(aws, options));
 });
 
 gulp.task('gulp-reload', function() {
