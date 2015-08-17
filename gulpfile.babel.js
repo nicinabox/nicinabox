@@ -26,9 +26,9 @@ const PATHS = {
   lib: './lib/*',
 };
 
-gulp.task('default', ['compile', 'watch']);
+gulp.task('default', ['repos', 'compile', 'watch']);
 
-gulp.task('compile', ['repos', 'templates', 'styles']);
+gulp.task('compile', ['templates', 'styles']);
 
 gulp.task('templates', () => {
   var data = loadTemplateData();
