@@ -1,4 +1,7 @@
+import moment from 'moment';
+
 export default {
+  lastBuild: moment().format('dddd, MMMM Do, YYYY'), 
   active_projects: [],
   current_projects: [],
   recent_contributions: [],
