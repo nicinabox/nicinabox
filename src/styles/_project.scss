@@ -20,18 +20,65 @@
 }
 
 .project {
-  border-top: 1px solid #4A4A4A;
   border-bottom: none;
   height: 107px;
-  overflow: hidden;
   margin-top: 28px;
   text-decoration: none;
   display: block;
-  color: $gray-dark;
+  position: relative;
 
   &:hover {
-    text-decoration: none;
-    border-color: $brand-primary;
+    .details {
+      text-decoration: none;
+      color: $brand-primary;
+    }
+
+    .actions {
+      border-color: $brand-primary;
+      height: 100%;
+    }
+  }
+
+  &.active {
+  }
+
+  .details {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    background: #fff;
+    border: none;
+    color: $gray-dark;
+  }
+
+  .actions {
+    border-bottom: 1px solid #4A4A4A;
+    height: 0;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    text-align: center;
+    transition: height 250ms ease;
+
+    .title {
+      margin: 10px 0;
+    }
+
+    a {
+      border: none;
+      padding: 4px 8px;
+      font-size: 18px;
+      border-radius: 3px;
+      display: inline-block;
+
+      &:hover {
+        color: #fff;
+        background: $brand-primary;
+      }
+    }
   }
 
   .title {
