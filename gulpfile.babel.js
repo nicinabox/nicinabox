@@ -9,6 +9,7 @@ import htmlmin from 'gulp-htmlmin';
 import cssmin from 'gulp-cssmin';
 import gzip from 'gulp-gzip';
 import s3 from 'gulp-s3';
+import webpack from 'gulp-webpack';
 import handlebars from 'gulp-compile-handlebars'
 import server from 'gulp-server-livereload';
 import handlebarsHelpers from './lib/handlebars_helpers';
@@ -23,8 +24,18 @@ const PATHS = {
   images: './src/**/*.ico',
   data: './data/*',
   styles: './src/styles/**/*.scss',
+  scripts: './src/scripts/main.js',
   build: './build',
   lib: './lib/*',
+};
+
+const webpackConfig = {
+  output: { filename: '[name].js' },
+  module: {
+    loaders: [
+      { test: /\.js$/, loader: 'babel?stage=2' }
+    ]
+  }
 };
 
 var repoData = [];
@@ -36,7 +47,11 @@ try {
 
 gulp.task('default', ['repos', 'build', 'watch']);
 
-gulp.task('build', ['templates', 'images', 'styles']);
+gulp.task('build', ['templates', 'images', 'styles', 'scripts']);
+
+gulp.task('watch', ['styles:watch', 'templates:watch', 'scripts:watch', 'serve'], () => {
+  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
+});
 
 gulp.task('templates', () => {
   var data = loadTemplateData(repoData);
@@ -74,12 +89,18 @@ gulp.task('styles', () => {
     .pipe(gulp.dest(PATHS.build));
 });
 
-gulp.task('styles:watch', () => {
-  gulp.watch(PATHS.styles, ['styles']);
+gulp.task('scripts', () => {
+  return gulp.src(PATHS.scripts)
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest(PATHS.build))
 });
 
-gulp.task('watch', ['styles:watch', 'templates:watch', 'serve'], () => {
-  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
+gulp.task('scripts:watch', () => {
+  gulp.watch(PATHS.scripts, ['scripts']);
+});
+
+gulp.task('styles:watch', () => {
+  gulp.watch(PATHS.styles, ['styles']);
 });
 
 gulp.task('repos', (done) => {
