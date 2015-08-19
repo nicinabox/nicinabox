@@ -119,7 +119,7 @@ gulp.task('watch:scripts', (done) => {
   });
 });
 
-gulp.task('watch:styles', () => {
+gulp.task('watch:styles', (done) => {
   watch(PATHS.styles, () => {
     gulp.start('styles', done);
   });
