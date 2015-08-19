@@ -110,7 +110,7 @@ gulp.task('repos', (done) => {
   });
 });
 
-gulp.task('minify', ['minify:html', 'minify:css']);
+gulp.task('minify', ['minify:html', 'minify:css', 'minify:js']);
 
 gulp.task('minify:html', () => {
   return gulp.src('build/*.html')
@@ -124,6 +124,17 @@ gulp.task('minify:css', () => {
   return gulp.src('build/*.css')
     .pipe(cssmin())
     .pipe(gulp.dest(PATHS.build));
+});
+
+gulp.task('minify:js', () => {
+  return gulp.src(PATHS.scripts)
+    .pipe(webpack({
+      ...webpackConfig,
+      plugins: [
+        new webpack.webpack.optimize.UglifyJsPlugin({ minimize: true })
+      ]
+    }))
+    .pipe(gulp.dest(PATHS.build))
 });
 
 gulp.task('deploy', ['minify'], () => {
