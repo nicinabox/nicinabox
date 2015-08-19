@@ -10,7 +10,7 @@ import cssmin from 'gulp-cssmin';
 import gzip from 'gulp-gzip';
 import rename from 'gulp-rename';
 import s3 from 'gulp-s3';
-import webpack from 'gulp-webpack';
+import webpack from 'webpack-stream';
 import handlebars from 'gulp-compile-handlebars'
 import inlineSource from 'gulp-inline-source'
 import server from 'gulp-server-livereload';
@@ -18,16 +18,22 @@ import handlebarsHelpers from './lib/handlebars_helpers';
 import loadTemplateData from './lib/load_template_data';
 import { getRepos } from './lib/github';
 
+const {
+  S3_KEY,
+  S3_SECRET,
+  S3_BUCKET,
+} = process.env
+
 const PATHS = {
-  src: './src',
   partialsDir: './src/partials',
   partials: './src/partials/**/*.hbs',
-  templates: './src/**/*.html',
+  templates: './src/**/*.html.hbs',
   images: './src/**/*.ico',
   data: './data/*',
   styles: './src/styles/**/*.scss',
   scripts: './src/scripts/main.js',
-  build: './build',
+  buildDir: './build',
+  build: './build/**',
   lib: './lib/*',
 };
 
@@ -49,11 +55,8 @@ try {
 
 gulp.task('default', ['repos', 'build', 'watch']);
 
+// Build
 gulp.task('build', ['templates', 'images', 'styles', 'scripts']);
-
-gulp.task('watch', ['styles:watch', 'templates:watch', 'scripts:watch', 'serve'], () => {
-  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
-});
 
 gulp.task('templates', () => {
   var data = loadTemplateData(repoData);
@@ -63,19 +66,15 @@ gulp.task('templates', () => {
       batch: glob.sync(PATHS.partialsDir),
       helpers: handlebarsHelpers
     }))
-    .pipe(gulp.dest(PATHS.build))
-});
-
-gulp.task('templates:watch', () => {
-  gulp.watch(PATHS.lib, ['templates']);
-  gulp.watch(PATHS.templates, ['templates']);
-  gulp.watch(PATHS.partials, ['templates']);
-  gulp.watch(PATHS.data, ['templates']);
+    .pipe(rename((path) => {
+      path.extname = ''
+    }))
+    .pipe(gulp.dest(PATHS.buildDir))
 });
 
 gulp.task('images', () => {
   return gulp.src(PATHS.images)
-    .pipe(gulp.dest(PATHS.build))
+    .pipe(gulp.dest(PATHS.buildDir))
 });
 
 gulp.task('styles', () => {
@@ -88,30 +87,38 @@ gulp.task('styles', () => {
         ]
       }).on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(PATHS.build));
+    .pipe(gulp.dest(PATHS.buildDir));
 });
 
 gulp.task('scripts', () => {
   return gulp.src(PATHS.scripts)
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest(PATHS.build))
+    .pipe(gulp.dest(PATHS.buildDir))
 });
 
-gulp.task('scripts:watch', () => {
+// Watch
+gulp.task('watch', ['watch:templates', 'watch:styles', 'watch:scripts', 'watch:gulpfile', 'serve']);
+
+gulp.task('watch:templates', () => {
+  gulp.watch(PATHS.lib, ['templates']);
+  gulp.watch(PATHS.templates, ['templates']);
+  gulp.watch(PATHS.partials, ['templates']);
+  gulp.watch(PATHS.data, ['templates']);
+});
+
+gulp.task('watch:scripts', () => {
   gulp.watch(PATHS.scripts, ['scripts']);
 });
 
-gulp.task('styles:watch', () => {
+gulp.task('watch:styles', () => {
   gulp.watch(PATHS.styles, ['styles']);
 });
 
-gulp.task('repos', (done) => {
-  getRepos((data) => {
-    repoData = data;
-    done();
-  });
-});
+gulp.task('watch:gulpfile', () => {
+  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
+})
 
+// Minify
 gulp.task('minify', ['minify:html', 'minify:css', 'minify:js']);
 
 gulp.task('inline', function () {
@@ -125,13 +132,13 @@ gulp.task('minify:html', ['inline'], () => {
     .pipe(htmlmin({
       collapseWhitespace: true
     }))
-    .pipe(gulp.dest(PATHS.build));
+    .pipe(gulp.dest(PATHS.buildDir));
 });
 
 gulp.task('minify:css', () => {
   return gulp.src('build/*.css')
     .pipe(cssmin())
-    .pipe(gulp.dest(PATHS.build));
+    .pipe(gulp.dest(PATHS.buildDir));
 });
 
 gulp.task('minify:js', () => {
@@ -142,14 +149,15 @@ gulp.task('minify:js', () => {
         new webpack.webpack.optimize.UglifyJsPlugin({ minimize: true })
       ]
     }))
-    .pipe(gulp.dest(PATHS.build))
+    .pipe(gulp.dest(PATHS.buildDir))
 });
 
+// Deploy
 gulp.task('deploy', ['minify'], () => {
   var aws = {
-    key: process.env.S3_KEY,
-    secret: process.env.S3_SECRET,
-    bucket: process.env.S3_BUCKET,
+    key: S3_KEY,
+    secret: S3_SECRET,
+    bucket: S3_BUCKET,
     region: 'us-east-1'
   };
 
@@ -160,18 +168,26 @@ gulp.task('deploy', ['minify'], () => {
     }
   };
 
-  return gulp.src('build/**')
+  return gulp.src(PATHS.build)
     .pipe(gzip())
     .pipe(s3(aws, options));
 });
 
+// Development
 gulp.task('gulp-reload', function() {
   spawn('gulp', ['watch'], { stdio: 'inherit' });
   process.exit();
 });
 
+gulp.task('repos', (done) => {
+  getRepos((data) => {
+    repoData = data;
+    done();
+  });
+});
+
 gulp.task('serve', () => {
-  return gulp.src(PATHS.build)
+  return gulp.src(PATHS.buildDir)
     .pipe(server({
       livereload: true,
       open: true
