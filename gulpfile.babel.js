@@ -8,6 +8,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import htmlmin from 'gulp-htmlmin';
 import cssmin from 'gulp-cssmin';
 import gzip from 'gulp-gzip';
+import rename from 'gulp-rename';
 import s3 from 'gulp-s3';
 import webpack from 'gulp-webpack';
 import handlebars from 'gulp-compile-handlebars'
