@@ -10,6 +10,7 @@ import htmlmin from 'gulp-htmlmin';
 import cssmin from 'gulp-cssmin';
 import gzip from 'gulp-gzip';
 import rename from 'gulp-rename';
+import rimraf from 'gulp-rimraf';
 import s3 from 'gulp-s3';
 import webpack from 'webpack-stream';
 import handlebars from 'gulp-compile-handlebars'
@@ -185,6 +186,11 @@ gulp.task('repos', (done) => {
     repoData = data;
     done();
   });
+});
+
+gulp.task('clean', () => {
+  return gulp.src(PATHS.buildDir, { read: false })
+    .pipe(rimraf())
 });
 
 gulp.task('serve', () => {
