@@ -11,6 +11,7 @@ import gzip from 'gulp-gzip';
 import s3 from 'gulp-s3';
 import webpack from 'gulp-webpack';
 import handlebars from 'gulp-compile-handlebars'
+import inlineSource from 'gulp-inline-source'
 import server from 'gulp-server-livereload';
 import handlebarsHelpers from './lib/handlebars_helpers';
 import loadTemplateData from './lib/load_template_data';
@@ -112,7 +113,13 @@ gulp.task('repos', (done) => {
 
 gulp.task('minify', ['minify:html', 'minify:css', 'minify:js']);
 
-gulp.task('minify:html', () => {
+gulp.task('inline', function () {
+  return gulp.src('build/*.html')
+      .pipe(inlineSource())
+      .pipe(gulp.dest('./build'));
+});
+
+gulp.task('minify:html', ['inline'], () => {
   return gulp.src('build/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true
