@@ -1,4 +1,7 @@
+import fastclick from 'fastclick';
 import $ from 'webpack-zepto';
+
+fastclick.attach(document.body);
 
 var selector = '.project-container';
 

@@ -5,6 +5,7 @@
   "main": "gulpfile.babel.js",
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
+    "fastclick": "^1.0.6",
     "webpack-zepto": "0.0.1"
   },
   "devDependencies": {
