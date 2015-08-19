@@ -35,7 +35,6 @@
   text-decoration: none;
   display: block;
   position: relative;
-  padding-bottom: 28px;
 
   &:hover {
     .details {
@@ -54,14 +53,22 @@
 
   .details {
     display: block;
-    overflow: hidden;
     height: 100%;
+    overflow: hidden;
     background: #fff;
     border: none;
     color: $gray-dark;
+    outline: 0;
 
     p {
+      display: block;
+      display: -webkit-box;
       color: $gray-light;
+      max-height: $line-height-computed * 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
 
