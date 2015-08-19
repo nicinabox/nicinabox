@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { spawn } from 'child_process';
+import { argv } from 'yargs';
 import _ from 'lodash';
 import gulp from 'gulp';
 import glob from 'glob';
@@ -190,6 +191,6 @@ gulp.task('serve', () => {
   return gulp.src(PATHS.buildDir)
     .pipe(server({
       livereload: true,
-      open: true
+      open: argv.open
     }));
 })
