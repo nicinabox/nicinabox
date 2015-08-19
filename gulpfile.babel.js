@@ -10,6 +10,7 @@ import htmlmin from 'gulp-htmlmin';
 import cssmin from 'gulp-cssmin';
 import gzip from 'gulp-gzip';
 import rename from 'gulp-rename';
+import watch from 'gulp-watch';
 import rimraf from 'gulp-rimraf';
 import s3 from 'gulp-s3';
 import webpack from 'webpack-stream';
@@ -99,26 +100,30 @@ gulp.task('scripts', () => {
 });
 
 // Watch
-gulp.task('watch', ['watch:templates', 'watch:styles', 'watch:scripts', 'watch:gulpfile', 'serve']);
+gulp.task('watch', ['watch:templates', 'watch:styles', 'watch:scripts', 'serve']);
 
-gulp.task('watch:templates', () => {
-  gulp.watch(PATHS.lib, ['templates']);
-  gulp.watch(PATHS.templates, ['templates']);
-  gulp.watch(PATHS.partials, ['templates']);
-  gulp.watch(PATHS.data, ['templates']);
+gulp.task('watch:templates', (done) => {
+  watch([
+    PATHS.templates,
+    PATHS.lib,
+    PATHS.partials,
+    PATHS.data,
+  ], () => {
+    gulp.start('templates', done);
+  });
 });
 
-gulp.task('watch:scripts', () => {
-  gulp.watch(PATHS.scripts, ['scripts']);
+gulp.task('watch:scripts', (done) => {
+  watch(PATHS.scripts, () => {
+    gulp.start('scripts', done);
+  });
 });
 
 gulp.task('watch:styles', () => {
-  gulp.watch(PATHS.styles, ['styles']);
+  watch(PATHS.styles, () => {
+    gulp.start('styles', done);
+  });
 });
-
-gulp.task('watch:gulpfile', () => {
-  gulp.watch('gulpfile.babel.js', ['gulp-reload']);
-})
 
 // Minify
 gulp.task('minify', ['minify:html', 'minify:css', 'minify:js']);
@@ -176,11 +181,6 @@ gulp.task('deploy', ['minify'], () => {
 });
 
 // Development
-gulp.task('gulp-reload', function() {
-  spawn('gulp', ['watch'], { stdio: 'inherit' });
-  process.exit();
-});
-
 gulp.task('repos', (done) => {
   getRepos((data) => {
     repoData = data;
