@@ -1,7 +1,5 @@
 import fs from 'fs';
-import { spawn } from 'child_process';
 import { argv } from 'yargs';
-import _ from 'lodash';
 import gulp from 'gulp';
 import glob from 'glob';
 import runSequence from 'run-sequence';
@@ -33,7 +31,7 @@ const PATHS = {
   partials: './src/partials/**/*.hbs',
   templates: './src/**/*.html.hbs',
   images: './src/**/*.ico',
-  data: './data/*',
+  data: './data.js',
   styles: './src/styles/**/*.scss',
   scripts: './src/scripts/main.js',
   buildDir: './build',
@@ -52,7 +50,7 @@ const webpackConfig = {
 
 var repoData = [];
 try {
-  repoData = JSON.parse(fs.readFileSync('/tmp/repos.json').toString());
+  repoData = JSON.parse(fs.readFileSync('repos.json').toString());
 } catch(e) {
   console.log('No repo cache found.');
 }
