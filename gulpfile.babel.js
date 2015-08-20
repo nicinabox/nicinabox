@@ -131,7 +131,7 @@ gulp.task('watch:styles', (done) => {
 // Minify
 gulp.task('minify', ['minify:html', 'minify:css', 'minify:js']);
 
-gulp.task('inline', function () {
+gulp.task('inline', ['minify:js', 'minify:css'], function () {
   return gulp.src('build/*.html')
       .pipe(inlineSource())
       .pipe(gulp.dest('./build'));
