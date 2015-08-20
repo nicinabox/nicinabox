@@ -4,6 +4,7 @@ import { argv } from 'yargs';
 import _ from 'lodash';
 import gulp from 'gulp';
 import glob from 'glob';
+import runSequence from 'run-sequence';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import htmlmin from 'gulp-htmlmin';
@@ -59,7 +60,9 @@ try {
 gulp.task('default', ['repos', 'build', 'watch']);
 
 // Build
-gulp.task('build', ['templates', 'images', 'styles', 'scripts']);
+gulp.task('build', (done) => {
+  runSequence('clean', ['templates', 'images', 'styles', 'scripts'], done);
+});
 
 gulp.task('templates', () => {
   var data = loadTemplateData(repoData);

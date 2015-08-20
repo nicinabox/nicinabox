@@ -28,6 +28,7 @@
     "gulp-watch": "^4.3.5",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
+    "run-sequence": "^1.1.2",
     "webpack-stream": "^2.1.0",
     "yargs": "^3.19.0"
   },
