@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.babel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "start": "gulp",
+    "deploy": "gulp build && gulp deploy",
+    "update": "gulp repos && gulp build && gulp deploy"
+  },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
     "fastclick": "^1.0.6",
@@ -31,12 +37,6 @@
     "run-sequence": "^1.1.2",
     "webpack-stream": "^2.1.0",
     "yargs": "^3.19.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "start": "gulp",
-    "deploy": "gulp build && gulp deploy",
-    "update": "gulp repos && gulp build && gulp deploy"
   },
   "author": "nicinabox",
   "license": "MIT"
