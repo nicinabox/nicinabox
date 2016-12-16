@@ -7,6 +7,5 @@ import './styles/main.scss'
 
 export default (locals) => {
   const html = renderToStaticMarkup(createElement(Document, locals))
-
   return Promise.resolve('<!DOCTYPE html>' + html)
 }
