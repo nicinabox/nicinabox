@@ -34,9 +34,12 @@ export default {
         presets: ['react'],
       },
       {
-        test: /(CNAME|\.ico$)/,
+        test: /\.ico$/,
         exclude: /node_modules/,
         loader: 'file-loader',
+        query: {
+          name: '[name].[ext]'
+        }
       },
       {
         test: /\.scss$/,
