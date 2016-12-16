@@ -1,9 +1,9 @@
-// import { h } from 'preact'
-// import render from 'preact-render-to-string'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import Document from './components/Document'
 
+import './CNAME'
+import './favicon.ico'
 import './styles/main.scss'
 
 export default (locals) => {

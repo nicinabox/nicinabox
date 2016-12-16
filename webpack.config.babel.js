@@ -34,6 +34,11 @@ export default {
         presets: ['react'],
       },
       {
+        test: /(CNAME|\.ico$)/,
+        exclude: /node_modules/,
+        loader: 'file-loader',
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?' + querystring.stringify({

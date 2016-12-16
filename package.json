@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "webpack-dev-server",
-    "build": "webpack -p && cp CNAME build/",
+    "build": "webpack -p",
     "deploy": "surge -p build",
     "update": "npm run repos && npm run build && npm run deploy",
     "repos": "node tasks repos"
@@ -29,6 +29,7 @@
     "css-loader": "^0.26.1",
     "date-fns": "^1.21.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "github-api": "^0.10.6",
     "glob": "^5.0.14",
     "lodash": "^3.10.1",
