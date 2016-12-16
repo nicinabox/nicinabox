@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\"",
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "deploy": "surge -d nicinabox.surge.sh -p build",
+    "deploy": "surge -p build",
     "update": "npm run repos && npm run build && npm run deploy",
     "repos": "node tasks repos"
   },
