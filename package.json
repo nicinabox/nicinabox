@@ -5,9 +5,11 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "start": "gulp",
-    "deploy": "gulp build && gulp deploy",
-    "update": "gulp repos && gulp build && gulp deploy"
+    "build": "webpack -p",
+    "deploy": "surge",
+    "update": "npm run repos && npm run build && npm run deploy",
+    "repos": "node tasks repos",
+    "dev": "webpack-dev-server"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
