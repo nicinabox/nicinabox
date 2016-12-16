@@ -5,11 +5,11 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "start": "webpack-dev-server",
     "build": "webpack -p",
-    "deploy": "surge",
+    "deploy": "surge -d nicinabox.surge.sh -p build",
     "update": "npm run repos && npm run build && npm run deploy",
-    "repos": "node tasks repos",
-    "dev": "webpack-dev-server"
+    "repos": "node tasks repos"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
