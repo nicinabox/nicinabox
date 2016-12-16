@@ -16,9 +16,9 @@ import webpack from 'webpack-stream';
 import handlebars from 'gulp-compile-handlebars'
 import inlineSource from 'gulp-inline-source'
 import server from 'gulp-server-livereload';
-import handlebarsHelpers from './lib/handlebars_helpers';
-import loadTemplateData from './lib/load_template_data';
-import { getRepos } from './lib/github';
+import handlebarsHelpers from './legacy-lib/handlebars_helpers';
+import loadTemplateData from './legacy-lib/load_template_data';
+import { getRepos } from './legacy-lib/github';
 
 const {
   S3_KEY,
@@ -27,16 +27,16 @@ const {
 } = process.env
 
 const PATHS = {
-  partialsDir: './src/partials',
-  partials: './src/partials/**/*.hbs',
-  templates: './src/**/*.html.hbs',
-  images: './src/**/*.ico',
+  partialsDir: './legacy-src/partials',
+  partials: './legacy-src/partials/**/*.hbs',
+  templates: './legacy-src/**/*.html.hbs',
+  images: './legacy-src/**/*.ico',
   data: './data.js',
-  styles: './src/styles/**/*.scss',
-  scripts: './src/scripts/main.js',
+  styles: './legacy-src/styles/**/*.scss',
+  scripts: './legacy-src/scripts/main.js',
   buildDir: './build',
   build: './build/**',
-  lib: './lib/*',
+  lib: './legacy-lib/*',
 };
 
 const webpackConfig = {
