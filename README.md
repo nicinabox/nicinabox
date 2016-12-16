@@ -8,7 +8,9 @@ A static site using gulp + github.
 
 ## Daily deploys
 
-Daily deploys are triggered once a day through a build on CircleCI. The build is triggered by `nicinabox-scheduler`.
+Daily deploys are triggered by `nicinabox-scheduler` once a day on CircleCI.
+
+CircleCI config can be found in `circle.yml`
 
 ## License
 
