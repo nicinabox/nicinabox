@@ -1,12 +1,12 @@
 {
   "name": "nicinabox",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "webpack-dev-server",
-    "build": "webpack -p",
+    "build": "webpack -p && cp CNAME build/",
     "deploy": "surge -p build",
     "update": "npm run repos && npm run build && npm run deploy",
     "repos": "node tasks repos"

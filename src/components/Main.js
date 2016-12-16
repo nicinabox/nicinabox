@@ -14,28 +14,8 @@ export default function Main (props) {
         </div>
 
         <div className="col-sm-8 col-sm-offset-1">
-          {/* <ProjectGroup
-            title="Active Projects"
-            description="Last 30 days"
-            projects={props.activeProjects} />
-
-          <ProjectGroup
-            title="Recent Projects"
-            description="Last 30 days"
-            projects={props.currentProjects} />
-
-          <ProjectGroup
-            title="Forks & Contributions"
-            description="Last 30 days"
-            projects={props.recentContributions} /> */}
-
-          {/* <ProjectGroup
-            title="Retired Projects"
-            description="Last 30 days"
-            projects={legacyProjects} /> */}
-
           {Object.keys(projects).map((k) => {
-            return <ProjectGroup key={k} title={k} projects={projects[k]} />
+            return <ProjectGroup key={k} {...projects[k]} />
           })}
 
           <Footer {...props} />
