@@ -1,4 +1,3 @@
-import fs from 'fs'
 import querystring from 'querystring'
 import StaticSiteGeneratorPlugin from 'static-site-generator-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
