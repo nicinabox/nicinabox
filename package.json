@@ -32,9 +32,9 @@
     "date-fns": "^1.21.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "github-api": "^0.10.6",
-    "glob": "^5.0.14",
-    "lodash": "^3.10.1",
+    "github-api": "^2.3.0",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.2",
     "node-sass": "^4.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -45,7 +45,7 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
-    "webpack-stream": "^2.1.0"
+    "webpack-stream": "^3.2.0"
   },
   "author": "nicinabox",
   "license": "MIT"
