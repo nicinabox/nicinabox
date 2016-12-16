@@ -1,6 +1,5 @@
 import React from 'react'
 import Project from './Project'
-import { startCase } from 'lodash'
 
 export default function ProjectGroup ({title, description, projects = []}) {
   if (!projects.length) return
@@ -8,7 +7,7 @@ export default function ProjectGroup ({title, description, projects = []}) {
   return (
     <div className="project-group">
       <h1>
-        {startCase(title)}
+        {title}
 
         <small className="text-muted description">
           {description}
