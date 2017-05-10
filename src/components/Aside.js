@@ -13,7 +13,7 @@ export default function Aside () {
 
       <h1><a href="/">Nic Aitch</a></h1>
       <p className="text-muted lead">
-        Javascript mostly
+        UI Engineer
       </p>
 
       <p className="description">
