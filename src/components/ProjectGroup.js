@@ -2,7 +2,7 @@ import React from 'react'
 import Project from './Project'
 
 export default function ProjectGroup ({title, description, projects = []}) {
-  if (!projects.length) return
+  if (!projects.length) return null
 
   return (
     <div className="project-group">
