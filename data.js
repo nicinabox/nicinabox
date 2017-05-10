@@ -4,12 +4,12 @@ export default {
     {
       name: 'Windchill',
       url: 'https://appsto.re/us/wtyegb.i',
-      icon: './src/images/icon-windchill.jpg',
+      icon: 'icon-windchill.jpg',
     },
     {
       name: 'Spanner',
       url: 'https://spanner.nicinabox.com',
-      icon: './src/images/icon-spanner.jpg',
+      icon: 'icon-spanner.jpg',
     },
   ],
   legacyProjectNames: [

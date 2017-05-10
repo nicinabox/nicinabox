@@ -33,7 +33,7 @@ export default {
         presets: ['react'],
       },
       {
-        test: /\.ico$/,
+        test: /\.(ico|png|jpg|svg)$/,
         exclude: /node_modules/,
         loader: 'file-loader',
         query: {
