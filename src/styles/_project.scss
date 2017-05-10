@@ -130,3 +130,46 @@
     }
   }
 }
+
+.app-group {
+  margin-bottom: 60px;
+
+  h1 {
+    margin-bottom: 28px;
+  }
+}
+
+.app {
+  text-align: center;
+  margin-bottom: 40px;
+
+  &:hover {
+    .details {
+      color: $brand-primary;
+    }
+  }
+
+  .details {
+    border: none;
+    color: $gray-dark;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .icon {
+    display: inline-block;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 175px;
+    width: 175px;
+  }
+
+  .icon-placeholder {
+    display: inline-block;
+    background: #eee;
+    width: 100%;
+    height: 100%;
+  }
+}

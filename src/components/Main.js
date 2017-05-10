@@ -1,6 +1,7 @@
 import React from 'react'
 import Aside from './Aside'
 import ProjectGroup from './ProjectGroup'
+import AppGroup from './AppGroup'
 import Footer from './Footer'
 
 export default function Main (props) {
@@ -15,6 +16,9 @@ export default function Main (props) {
 
         <div className="col-sm-8 col-sm-offset-1">
           {Object.keys(projects).map((k) => {
+            if (k === 'apps') {
+              return <AppGroup key={k} {...projects[k]} />
+            }
             return <ProjectGroup key={k} {...projects[k]} />
           })}
 
