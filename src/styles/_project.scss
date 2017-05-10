@@ -164,6 +164,10 @@
     overflow: hidden;
     height: 175px;
     width: 175px;
+
+    img {
+      max-width: 100%;
+    }
   }
 
   .icon-placeholder {
@@ -171,5 +175,12 @@
     background: #eee;
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (max-width: $container-md) {
+    .icon {
+      height: auto;
+      width: auto;
+    }
   }
 }

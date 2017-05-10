@@ -17,7 +17,7 @@ export default function ProjectGroup ({title, description, projects = []}) {
       <div className="row">
         {projects.map((p, i) => {
           return (
-            <div key={i} className="col-sm-4 apps-container">
+            <div key={i} className="col-xs-6 col-sm-4 apps-container">
               <App {...p} />
             </div>
           )
