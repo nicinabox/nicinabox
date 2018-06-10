@@ -1,9 +1,0 @@
-machine:
-  node:
-    version: 6.1.0
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - npm run update
