@@ -6,7 +6,5 @@ jobs:
 
     steps:
       - deploy:
-          production:
-            branch: master
-            commands:
-              - npm run update
+          - checkout
+          - run: npm run update
