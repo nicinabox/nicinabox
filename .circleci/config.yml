@@ -6,6 +6,13 @@ jobs:
 
     steps:
       - checkout
-
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - deploy:
           command: npm run update
