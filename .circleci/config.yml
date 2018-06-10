@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:6-browsers
 
-    steps:
-      - deploy:
-          - checkout
-          - run: npm run update
+deploy:
+  -steps:
+    - checkout
+    - run: npm run update
