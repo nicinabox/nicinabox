@@ -7,4 +7,5 @@ jobs:
     steps:
       - checkout
 
-      - deploy: npm run update
+      - deploy:
+          command: npm run update
