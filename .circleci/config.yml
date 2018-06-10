@@ -3,9 +3,10 @@ jobs:
   build:
     node:
       version: 6.1.0
+
   steps:
     - deploy:
-      production:
-        branch: master
-        commands:
-          - npm run update
+        production:
+          branch: master
+          commands:
+            - npm run update
