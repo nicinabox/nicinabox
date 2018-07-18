@@ -11,6 +11,11 @@ export default {
       url: 'https://spanner.nicinabox.com',
       icon: 'icon-spanner.png',
     },
+    {
+      name: 'ImgZeit',
+      url: 'https://imgzeit.com',
+      icon: '',
+    },
   ],
   legacyProjectNames: [
     'cassidy', 'superslides', 'shortcode.js', 'petrie', 'trolley', 'boiler',
