@@ -17,11 +17,13 @@ export default function Aside () {
       </p>
 
       <p className="description">
-        I'm a frontend engineer at <a href="https://www.advisory.com/">The Advisory Board Company</a>.
+        I'm a frontend engineer at <a href="https://www.remotelock.com/">Remote Lock</a>.
       </p>
 
       <nav className="contact">
-        <a href="http://twitter.com/nicinabox">@nicinabox</a>
+        <a href="http://github.com/nicinabox">Github</a>
+        <span> &bull; </span>
+        <a href="http://twitter.com/nicinabox">Twitter</a>
       </nav>
     </div>
   )
