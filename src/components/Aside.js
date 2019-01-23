@@ -11,18 +11,21 @@ export default function Aside () {
           alt="" />
       </a>
 
-      <h1><a href="/">Nic Aitch</a></h1>
+      <h1><a href="/">Nic Haynes</a></h1>
       <p className="text-muted lead">
         UI Engineer
       </p>
 
       <p className="description">
-        I'm a frontend engineer at <a href="https://www.remotelock.com/">Remote Lock</a>.
+        I work on mobile at <a href="https://www.remotelock.com/">RemoteLock</a> improving IoT usability.
+      </p>
+      <p className="description">
+        In my spare time, I'm hacking on side projects and mechanical keyboards.
       </p>
 
       <nav className="contact">
         <a href="http://github.com/nicinabox">Github</a>
-        <span> &bull; </span>
+        <span> • </span>
         <a href="http://twitter.com/nicinabox">Twitter</a>
       </nav>
     </div>
