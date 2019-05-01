@@ -17,10 +17,10 @@ export default function Aside () {
       </p>
 
       <p className="description">
-        I work on mobile at <a href="https://www.remotelock.com/">RemoteLock</a> improving IoT usability.
+        I work on internal tools at Lyft.
       </p>
       <p className="description">
-        In my spare time, I'm hacking on side projects and mechanical keyboards.
+        In my spare time, I'm building mechanical keyboards, doing home renovations, and riding motorcycles.
       </p>
 
       <nav className="contact">
