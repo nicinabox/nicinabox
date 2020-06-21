@@ -1,10 +1,10 @@
 # nicinabox.com
 
-A static site using react + webpack.
+My personal site using a static site generator and continuously deployed.
 
 ## Update and deploy
 
-`npm run update`
+`npm run deploy`
 
 ## Daily deploys
 
@@ -14,4 +14,4 @@ CircleCI config can be found in `circle.yml`
 
 ## License
 
-Code is MIT. Content is copyright Nic Aitch.
+Code is MIT. Content is copyright Nic Haynes.

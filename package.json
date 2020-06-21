@@ -4,13 +4,13 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "clean": "mkdir -p build && rm -rf build/*",
     "start": "npx @11ty/eleventy --serve",
+    "update": "node tasks data",
     "prebuild": "npm run update",
     "build": "npx @11ty/eleventy",
-    "clean": "mkdir -p build && rm -rf build/*",
-    "publish": "npm run update && npm run build && npm run deploy",
-    "deploy": "node tasks deploy",
-    "update": "node tasks data"
+    "predeploy": "npm run build",
+    "deploy": "node tasks deploy"
   },
   "dependencies": {},
   "devDependencies": {
