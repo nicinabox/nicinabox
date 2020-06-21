@@ -12,7 +12,7 @@ a {
 
   &.link-secondary {
       color: $black;
-      text-decoration-color: lighten($black, 30%);
+      text-decoration-color: $gray-light;
 
       &:hover, &:focus {
           color: $link-hover-color;
@@ -21,8 +21,8 @@ a {
   }
 
   &.link-muted {
-      color: $gray-light;
-      text-decoration-color: lighten($gray-light, 30%);
+      color: $gray-mid;
+      text-decoration-color: lighten($gray-mid, 30%);
 
       &:hover, &:focus {
           color: $link-hover-color;
@@ -32,7 +32,7 @@ a {
 }
 
 .text-muted {
-  color: #9B9B9B;
+  color: $gray-mid;
 }
 
 .lead {
