@@ -1,24 +1,24 @@
-import { isAfter, subDays } from 'date-fns'
-import data from '../data/site'
+import { isAfter, subDays, parseISO } from 'date-fns'
+import site from '../data/site'
 
 const isLegacyProject = (name) => {
-  return data.legacyProjectNames.includes(name)
+  return site.legacyProjectNames.includes(name)
 }
 
 const sortByName = (a, b) => a.name.toLowerCase() > b.name.toLowerCase()
 
 const isRecentProject = (project) => {
   return !isLegacyProject(project.name) &&
-    isAfter(project.pushedAt, subDays(new Date, 30)) &&
+    isAfter(parseISO(project.pushedAt), subDays(new Date(), 30)) &&
     project.isOwner &&
     !project.isFork
 }
 
 export const reposAfter = (repos, days = 30) => {
-  let date = subDays(new Date, days)
+  let date = subDays(new Date(), days)
 
   return repos
-    .filter((repo) => isAfter(repo.pushedAt, date))
+    .filter((repo) => isAfter(parseISO(repo.pushedAt), date))
     .sort(sortByName)
 }
 
@@ -43,5 +43,5 @@ export const recentProjects = (repos) => {
 }
 
 export function apps() {
-  return data.apps
+  return site.apps
 }

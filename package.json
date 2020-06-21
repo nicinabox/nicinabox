@@ -5,35 +5,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "npx @11ty/eleventy --serve",
-    "build": "webpack -p",
+    "build": "npx @11ty/eleventy",
     "clean": "mkdir -p build && rm -rf build/*",
+    "publish": "npm run update && npm run build && npm run deploy",
     "deploy": "node tasks deploy",
-    "update": "npm run repos && npm run build && npm run deploy",
-    "data": "node tasks data"
+    "update": "node tasks data"
   },
   "dependencies": {
-    "bootstrap-sass": "^3.4.1",
-    "fastclick": "^1.0.6",
-    "mustache": "^4.0.1",
-    "webpack-zepto": "0.0.1"
-  },
-  "devDependencies": {
+},
+"devDependencies": {
     "@11ty/eleventy": "^0.11.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^6.2.10",
-    "babel-plugin-transform-class-properties": "^6.19.0",
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "babel-register": "^6.26.0",
-    "babel-runtime": "^6.26.0",
-    "date-fns": "^1.30.1",
-    "github-api": "^2.3.0",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "bootstrap-sass": "^3.4.1",
+    "date-fns": "^2.14.0",
+    "github-api": "^3.3.0",
     "glob": "^7.1.6",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.15",
     "node-sass": "^4.14.1",
     "s3": "^4.4.0"
   },

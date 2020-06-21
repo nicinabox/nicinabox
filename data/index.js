@@ -9,7 +9,7 @@ import {
 
 export default function(repos) {
   return {
-    lastBuild: format(new Date(), 'dddd, MMMM Do, YYYY'),
+    lastBuild: format(new Date(), 'dddd, MMMM Do, yyyy'),
     apps: {
       title: 'Apps',
       description: '',
