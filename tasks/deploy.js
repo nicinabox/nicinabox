@@ -1,4 +1,4 @@
-import s3 from 's3'
+import s3 from '@auth0/s3'
 
 const client = s3.createClient({
   s3Options: {
@@ -10,7 +10,7 @@ const client = s3.createClient({
 export default () => {
   console.log('Uploading to S3 bucket', process.env.S3_BUCKET)
 
-  let uploader = client.uploadDir({
+  const uploader = client.uploadDir({
     localDir: 'build',
     deleteRemoved: true,
     s3Params: {
@@ -25,5 +25,4 @@ export default () => {
       resolve()
     })
   })
-
 }

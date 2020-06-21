@@ -11,10 +11,10 @@
     "deploy": "node tasks deploy",
     "update": "node tasks data"
   },
-  "dependencies": {
-},
-"devDependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
+    "@auth0/s3": "^1.0.0",
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/register": "^7.10.3",
@@ -23,8 +23,7 @@
     "github-api": "^3.3.0",
     "glob": "^7.1.6",
     "handlebars": "^4.7.6",
-    "node-sass": "^4.14.1",
-    "s3": "^4.4.0"
+    "node-sass": "^4.14.1"
   },
   "author": "nicinabox",
   "license": "MIT"
