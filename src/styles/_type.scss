@@ -8,7 +8,16 @@ h1 {
 
 a {
   text-decoration: underline;
-  &:hover, &:focus {
+  text-decoration-color: lighten($brand-primary, 30%);
+
+  &.link-muted {
+      color: $gray-light;
+      text-decoration-color: lighten($gray-light, 30%);
+
+      &:hover, &:focus {
+          color: $link-hover-color;
+          text-decoration-color: $link-hover-color;
+      }
   }
 }
 

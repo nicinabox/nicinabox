@@ -92,6 +92,7 @@
     }
 
     a {
+      text-decoration: none;
       border: 1px solid lighten($brand-primary, 30%);
       padding: 4px 8px;
       font-size: 18px;
@@ -153,6 +154,11 @@
   .details {
     border: none;
     color: $gray-dark;
+    text-decoration: none;
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
   }
 
   .title {
@@ -180,6 +186,7 @@
 
   @media screen and (max-width: $container-md) {
     .icon {
+      border-radius: 9px;
       height: auto;
       width: auto;
     }
