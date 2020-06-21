@@ -10,6 +10,16 @@ a {
   text-decoration: underline;
   text-decoration-color: lighten($brand-primary, 30%);
 
+  &.link-secondary {
+      color: $black;
+      text-decoration-color: lighten($black, 30%);
+
+      &:hover, &:focus {
+          color: $link-hover-color;
+          text-decoration-color: $link-hover-color;
+      }
+  }
+
   &.link-muted {
       color: $gray-light;
       text-decoration-color: lighten($gray-light, 30%);
