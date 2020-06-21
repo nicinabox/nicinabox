@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "npx @11ty/eleventy --serve",
+    "prebuild": "npm run update",
     "build": "npx @11ty/eleventy",
     "clean": "mkdir -p build && rm -rf build/*",
     "publish": "npm run update && npm run build && npm run deploy",
