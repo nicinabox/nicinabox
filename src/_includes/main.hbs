@@ -1,0 +1,33 @@
+<main className="container">
+    <div className="row">
+        <div className="col-sm-3">
+            {{> aside}}
+        </div>
+
+        <div className="col-sm-8 col-sm-offset-1">
+            {{#with site.projects}}
+                {{#with apps}}
+                    {{> app_group}}
+                {{/with}}
+
+                {{#with activeProjects}}
+                    {{> project_group}}
+                {{/with}}
+
+                {{#with recentProjects}}
+                    {{> project_group}}
+                {{/with}}
+
+                {{#with recentContributions}}
+                    {{> project_group}}
+                {{/with}}
+
+                {{#with retiredProjects}}
+                    {{> project_group}}
+                {{/with}}
+            {{/with}}
+
+            {{> footer}}
+        </div>
+    </div>
+</main>

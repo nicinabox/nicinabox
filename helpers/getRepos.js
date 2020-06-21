@@ -21,7 +21,7 @@ export default function getRepos() {
           name: repo.name,
           fullName: repo.full_name,
           description: repo.description,
-          url: repo.html_url,
+          repoUrl: repo.html_url,
           homepage: repo.homepage,
           pushedAt: repo.pushed_at,
           isOwner: repo.owner.login === OWNER,

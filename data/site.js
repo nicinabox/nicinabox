@@ -1,19 +1,18 @@
 export default {
-  lastBuild: new Date(),
   apps: [
     {
       name: 'Windchill',
-      url: 'https://appsto.re/us/wtyegb.i',
+      appUrl: 'https://appsto.re/us/wtyegb.i',
       icon: 'icon-windchill.png',
     },
     {
       name: 'Spanner',
-      url: 'https://spanner.nicinabox.com',
+      appUrl: 'https://spanner.nicinabox.com',
       icon: 'icon-spanner.png',
     },
     {
       name: 'ImgZeit',
-      url: 'https://imgzeit.com',
+      appUrl: 'https://imgzeit.com',
       icon: '',
     },
   ],

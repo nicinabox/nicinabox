@@ -1,5 +1,5 @@
 import { isAfter, subDays } from 'date-fns'
-import data from '../data'
+import data from '../data/site'
 
 const isLegacyProject = (name) => {
   return data.legacyProjectNames.includes(name)

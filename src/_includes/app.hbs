@@ -1,0 +1,16 @@
+<div className="app">
+    <a href="{{appUrl}}" className="details">
+        <div className="icon">
+            {{#if icon}}
+                <div className="icon-placeholder" />
+            {{/if}}
+            {{#unless icon}}
+                <div className="icon-placeholder" />
+            {{/unless}}
+        </div>
+
+        <h4 className="title">
+            {{name}}
+        </h4>
+    </a>
+</div>

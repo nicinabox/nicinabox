@@ -1,0 +1,16 @@
+<div className="project-group">
+    <h1>
+        {{title}}
+        <small className="text-muted description">
+            {{description}}
+        </small>
+    </h1>
+
+    <div className="row">
+        {{#each projects}}
+        <div key={i} className="col-sm-4 project-container">
+            {{> project}}
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,20 +1,21 @@
+import { format } from 'date-fns'
 import {
   activeProjects,
   recentProjects,
   recentContributions,
   legacyProjects,
   apps,
-} from './processRepos'
+} from '../helpers/projects'
 
 export default function(repos) {
   return {
-    lastBuild: new Date(),
+    lastBuild: format(new Date(), 'dddd, MMMM Do, YYYY'),
+    apps: {
+      title: 'Apps',
+      description: '',
+      projects: apps(),
+    },
     projects: {
-      apps: {
-        title: 'Apps',
-        description: '',
-        projects: apps(),
-      },
       activeProjects: {
         title: 'Active Projects',
         description: 'Last 30 days',
