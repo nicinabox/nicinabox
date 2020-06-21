@@ -2,15 +2,17 @@
 
 My personal site using a static site generator and continuously deployed.
 
-## Update and deploy
+## Update data
 
-`npm run deploy`
+`npm run update`
+
+## Deploy
+
+Pushes to `master` will continuously deploy to Netlify.
 
 ## Daily deploys
 
 Daily deploys are triggered by `nicinabox-scheduler` once a day on CircleCI.
-
-CircleCI config can be found in `circle.yml`
 
 ## License
 

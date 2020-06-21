@@ -1,21 +1,18 @@
 {
   "name": "nicinabox",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "clean": "mkdir -p build && rm -rf build/*",
     "start": "npx @11ty/eleventy --serve",
-    "update": "node tasks data",
+    "update": "node tasks update",
     "prebuild": "npm run update",
-    "build": "npx @11ty/eleventy",
-    "predeploy": "npm run build",
-    "deploy": "node tasks deploy"
+    "build": "npx @11ty/eleventy"
   },
   "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
-    "@auth0/s3": "^1.0.0",
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/register": "^7.10.3",
