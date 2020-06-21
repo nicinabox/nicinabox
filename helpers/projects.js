@@ -1,4 +1,4 @@
-import { isAfter, subDays, parseISO } from 'date-fns'
+import { isAfter, isBefore, subDays, parseISO } from 'date-fns'
 import site from '../data/site'
 
 const isLegacyProject = (name) => {
@@ -8,14 +8,21 @@ const isLegacyProject = (name) => {
 const sortByName = (a, b) => a.name.toLowerCase() > b.name.toLowerCase()
 
 const isRecentProject = (project) => {
-  return !isLegacyProject(project.name) &&
-    isAfter(parseISO(project.pushedAt), subDays(new Date(), 30)) &&
-    project.isOwner &&
-    !project.isFork
+  return !isLegacyProject(project.name) && project.isOwner && !project.isFork
 }
 
-export const reposAfter = (repos, days = 30) => {
-  let date = subDays(new Date(), days)
+export const reposBetween = (repos, [minDays, maxDays]) => {
+    const ceil = subDays(new Date(), minDays)
+    const floor = subDays(new Date(), maxDays)
+
+    return repos.filter((repo) => {
+        return isAfter(parseISO(repo.pushedAt), floor) &&
+            isBefore(parseISO(repo.pushedAt), ceil)
+    })
+}
+
+export const reposAfter = (repos, daysBeforeNow = 30) => {
+  const date = subDays(new Date(), daysBeforeNow);
 
   return repos
     .filter((repo) => isAfter(parseISO(repo.pushedAt), date))
@@ -26,6 +33,12 @@ export const activeProjects = (repos) => {
   return reposAfter(repos, 30).filter((repo) => repo.isOwner)
 }
 
+export const recentProjects = (repos) => {
+  return reposBetween(repos, [30, 30 * 6])
+    .filter(isRecentProject)
+    .sort(sortByName);
+};
+
 export const legacyProjects = (repos) => {
   return repos
     .filter((repo) => isLegacyProject(repo.name))
@@ -34,12 +47,6 @@ export const legacyProjects = (repos) => {
 
 export const recentContributions = (repos) => {
   return reposAfter(repos, 365).filter((project) => project.isFork || project.isContributor)
-}
-
-export const recentProjects = (repos) => {
-  return reposAfter(repos, 30 * 6)
-    .filter(isRecentProject)
-    .sort(sortByName)
 }
 
 export function apps() {
