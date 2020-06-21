@@ -1,22 +1,22 @@
-<div className="project">
-    <div className="actions">
+<div class="project">
+    <div class="actions">
         <nav>
             <a href="{{repoUrl}}">Code</a>
             <a href="{{homepage}}">Homepage</a>
         </nav>
     </div>
 
-    <a href="{{repoUrl}}" className="details">
-    <h4 className="title">
-        {{#if isOwner}}
-            {{name}}
-        {{/if}}
-        {{#unless isOwner}}
-            {{fullName}}
-        {{/unless}}
-    </h4>
-    <p>
-        {{description}}
-    </p>
+    <a href="{{repoUrl}}" class="details">
+        <h4 class="title">
+            {{#if isOwner}}
+                {{name}}
+            {{/if}}
+            {{#unless isOwner}}
+                {{fullName}}
+            {{/unless}}
+        </h4>
+        <p>
+            {{description}}
+        </p>
     </a>
 </div>

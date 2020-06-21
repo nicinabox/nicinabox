@@ -1,15 +1,15 @@
-<main className="container">
-    <div className="row">
-        <div className="col-sm-3">
+<main class="container">
+    <div class="row">
+        <div class="col-sm-3">
             {{> aside}}
         </div>
 
-        <div className="col-sm-8 col-sm-offset-1">
-            {{#with site.projects}}
-                {{#with apps}}
-                    {{> app_group}}
-                {{/with}}
+        <div class="col-sm-8 col-sm-offset-1">
+            {{#with site.apps}}
+                {{> app_group}}
+            {{/with}}
 
+            {{#with site.projects}}
                 {{#with activeProjects}}
                     {{> project_group}}
                 {{/with}}

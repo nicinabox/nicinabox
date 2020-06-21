@@ -12,7 +12,7 @@
     "data": "node tasks data"
   },
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "fastclick": "^1.0.6",
     "mustache": "^4.0.1",
     "webpack-zepto": "0.0.1"
@@ -29,25 +29,13 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "css-loader": "^0.26.1",
-    "date-fns": "^1.29.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
+    "date-fns": "^1.30.1",
     "github-api": "^2.3.0",
-    "glob": "^7.1.2",
+    "glob": "^7.1.6",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.10",
-    "node-sass": "^4.9.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
-    "run-sequence": "^1.2.2",
-    "s3": "^4.4.0",
-    "sass-loader": "^4.1.0",
-    "static-site-generator-webpack-plugin": "^3.1.0",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-stream": "^3.2.0"
+    "lodash": "^4.17.15",
+    "node-sass": "^4.14.1",
+    "s3": "^4.4.0"
   },
   "author": "nicinabox",
   "license": "MIT"

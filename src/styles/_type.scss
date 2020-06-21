@@ -1,0 +1,23 @@
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+a {
+  border-bottom: 1px solid;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.text-muted {
+  color: #9B9B9B;
+}
+
+.lead {
+  font-size: 20px;
+}

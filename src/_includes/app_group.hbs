@@ -1,16 +1,16 @@
-<div className="project-group">
+<div class="project-group">
     <h1>
         {{title}}
-        <small className="text-muted description">
+        <small class="text-muted description">
             {{description}}
         </small>
     </h1>
 
-    <div className="row">
+    <div class="row">
         {{#each projects}}
-        <div key={i} className="col-sm-4 project-container">
-            {{> app}}
-        </div>
+            <div class="col-sm-3 project-container">
+                {{> app}}
+            </div>
         {{/each}}
     </div>
 </div>
