@@ -9,33 +9,33 @@ import {
 
 export default function(repos) {
   return {
-    lastBuild: format(new Date(), 'dddd, MMMM Do, yyyy'),
+    lastBuild: format(new Date(), "eeee, MMMM do, yyyy"),
     apps: {
-      title: 'Apps',
-      description: '',
+      title: "Apps",
+      description: "",
       projects: apps(),
     },
     projects: {
       activeProjects: {
-        title: 'Active Projects',
-        description: 'Last 30 days',
+        title: "Active Projects",
+        description: "Last 30 days",
         projects: activeProjects(repos),
       },
       recentProjects: {
-        title: 'Recent Projects',
-        description: 'Last 6 months',
+        title: "Recent Projects",
+        description: "Last 6 months",
         projects: recentProjects(repos),
       },
       recentContributions: {
-        title: 'Forks & Contributions',
-        description: 'Last 12 months',
+        title: "Forks & Contributions",
+        description: "Last 12 months",
         projects: recentContributions(repos),
       },
       retiredProjects: {
-        title: 'Retired Projects',
-        description: 'Not under active development',
-        projects: legacyProjects(repos)
-      }
-    }
-  }
+        title: "Retired Projects",
+        description: "Not under active development",
+        projects: legacyProjects(repos),
+      },
+    },
+  };
 }
