@@ -14,7 +14,7 @@ const isRecentProject = (project) => {
     !project.isFork
 }
 
-export function reposAfter (repos, days = 30) {
+export const reposAfter = (repos, days = 30) => {
   let date = subDays(new Date, days)
 
   return repos
@@ -22,21 +22,21 @@ export function reposAfter (repos, days = 30) {
     .sort(sortByName)
 }
 
-export function activeProjects (repos) {
+export const activeProjects = (repos) => {
   return reposAfter(repos, 30).filter((repo) => repo.isOwner)
 }
 
-export function legacyProjects (repos) {
+export const legacyProjects = (repos) => {
   return repos
     .filter((repo) => isLegacyProject(repo.name))
     .sort(sortByName)
 }
 
-export function recentContributions (repos) {
+export const recentContributions = (repos) => {
   return reposAfter(repos, 365).filter((project) => project.isFork || project.isContributor)
 }
 
-export function recentProjects (repos) {
+export const recentProjects = (repos) => {
   return reposAfter(repos, 30 * 6)
     .filter(isRecentProject)
     .sort(sortByName)

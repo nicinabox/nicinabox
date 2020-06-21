@@ -7,10 +7,8 @@ h1 {
 }
 
 a {
-  border-bottom: 1px solid;
-
+  text-decoration: underline;
   &:hover, &:focus {
-    text-decoration: none;
   }
 }
 

@@ -52,6 +52,7 @@
   }
 
   .details {
+    text-decoration: none;
     display: block;
     height: 100%;
     overflow: hidden;
@@ -160,10 +161,10 @@
 
   .icon {
     display: inline-block;
-    border-radius: 30px;
+    border-radius: 18px;
     overflow: hidden;
-    height: 175px;
-    width: 175px;
+    height: 80px;
+    width: 80px;
 
     img {
       max-width: 100%;

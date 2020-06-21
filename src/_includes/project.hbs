@@ -2,7 +2,9 @@
     <div class="actions">
         <nav>
             <a href="{{repoUrl}}">Code</a>
-            <a href="{{homepage}}">Homepage</a>
+            {{#homepage}}
+                <a href="{{homepage}}">Homepage</a>
+            {{/homepage}}
         </nav>
     </div>
 

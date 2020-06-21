@@ -25,7 +25,12 @@
 
     &:hover {
       color: $link-hover-color;
-      border-bottom-color: $link-hover-color;
     }
+  }
+
+  .contact {
+      a {
+          display: block;
+      }
   }
 }
