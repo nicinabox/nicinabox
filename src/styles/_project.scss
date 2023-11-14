@@ -23,7 +23,7 @@
 .project-container {
   &.active {
     .actions {
-      height: 101%;
+      height: calc(100% + 2px);
       border-bottom-color: $brand-primary;
       z-index: 2;
     }
@@ -75,7 +75,7 @@
   }
 
   .actions {
-    border-bottom: 1px solid $gray-dark;
+    border-bottom: 2px solid $gray-dark;
     box-shadow: 0 1px 0 0 $gray-light inset;
     height: 0;
     top: 0;
@@ -101,7 +101,7 @@
       display: inline-block;
 
       + a {
-        margin-left: 5px;
+        margin-left: 10px;
       }
 
       &:hover {
@@ -117,7 +117,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    margin-bottom: 4px;
+    margin-top: 16px;
+    margin-bottom: 8px;
     line-height: 1.2;
   }
 
