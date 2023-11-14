@@ -23,5 +23,9 @@
     "node-sass": "^9.0.0"
   },
   "author": "nicinabox",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@netlify/functions": "^2.4.0",
+    "node-fetch": "^3.3.2"
+  }
 }
