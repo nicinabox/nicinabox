@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Hi, I'm Nic. I'm a frontend engineer with an eye for detail and a passion for creating things that are a pleasure to use."
+        />
+        <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="./style.css" type="text/css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>Nic Haynes</title>
+
+        <script>
+            function skipDelay(e) {
+                document.body.classList.add("skip-delay");
+            }
+            window.onkeyup = skipDelay;
+            window.onclick = skipDelay;
+        </script>
+    </head>
+    <body class="h-screen bg-white dark:bg-black dark:text-gray-400">
+        <div id="app" class="container px-10 max-w-[80ch] overflow-hidden">
+            <div
+                class="flex items-center size-20 rounded-full overflow-hidden my-10 dark:opacity-60 bg-yellow-500 border-4 border-yellow-500 hover:animate-spin"
+            >
+                <img
+                    src="avatar.png"
+                    class="object-cover mix-blend-hard-light"
+                />
+            </div>
+
+            <div id="intro" class="leading-normal text-3xl my-10">
+                <span class="animate-reveal animate-delay-300 font-bold">
+                    Hi,</span
+                >
+                <span class="animate-reveal animate-delay-500 font-bold"
+                    >I'm Nic.
+                </span>
+                <span class="animate-reveal animate-delay-1600"
+                    >I'm a frontend engineer
+                </span>
+                <span class="animate-reveal animate-delay-2000"
+                    >with an eye for detail
+                </span>
+                <span class="animate-reveal animate-delay-2800"
+                    >and a passion
+                </span>
+                <span class="animate-reveal animate-delay-3600"
+                    >for creating things that are a pleasure to use.
+                </span>
+            </div>
+
+            <div
+                id="about"
+                class="leading-normal mb-5 flex flex-col gap-5 text-lg"
+            >
+                <span class="animate-reveal animate-delay-4000">
+                    🧑‍💻 Currently at NVIDIA
+                </span>
+                <span class="animate-reveal animate-delay-4200">
+                    ✉️ Contact me at
+                    <a
+                        class="border-b-2 transition-all border-gray-300 hover:border-current"
+                        href="mailto:im.nic@hey.com"
+                        >im.nic@hey.com</a
+                    >
+                </span>
+            </div>
+        </div>
+    </body>
+</html>

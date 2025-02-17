@@ -1,31 +1,19 @@
 {
   "name": "nicinabox",
-  "version": "3.0.0",
-  "description": "",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "clean": "mkdir -p build && rm -rf build/*",
-    "start": "npx @11ty/eleventy --serve",
-    "update": "node tasks update",
-    "prebuild": "npm run update",
-    "build": "npx @11ty/eleventy"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
-    "@babel/core": "^7.10.3",
-    "@babel/preset-env": "^7.10.3",
-    "@babel/register": "^7.10.3",
-    "bootstrap-sass": "^3.4.1",
-    "date-fns": "^2.14.0",
-    "github-api": "^3.3.0",
-    "glob": "^7.1.6",
-    "handlebars": "^4.7.6",
-    "node-sass": "^9.0.0"
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0"
   },
-  "author": "nicinabox",
-  "license": "MIT",
   "dependencies": {
-    "@netlify/functions": "^2.4.0",
-    "node-fetch": "^3.3.2"
+    "@tailwindcss/vite": "^4.0.6",
+    "tailwindcss": "^4.0.6"
   }
 }

@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "DM Sans", serif;
+
+    --animate-reveal: reveal-text 1.2s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+
+    @keyframes reveal-text {
+        0% {
+            opacity: 0;
+            top: 6px;
+        }
+        100% {
+            opacity: 1;
+            top: 0;
+        }
+    }
+}
+
+@utility animate-reveal {
+    position: relative;
+    top: 0;
+    opacity: 0;
+}
+
+@utility animate-delay-* {
+    animation-delay: --value([ *]);
+    animation-delay: calc(--value(integer) * 1ms);
+}
+
+@utility skip-animation {
+    .animate-reveal {
+        animation-duration: 5ms;
+    }
+}
+@utility skip-delay {
+    .animate-reveal {
+        animation-delay: 50ms;
+    }
+}
