@@ -81,7 +81,8 @@
                 document.body.classList.add("skip-delay");
             }
             window.onkeyup = skipDelay;
-            window.onclick = skipDelay;
+            window.onmousedown = skipDelay;
+            window.ontouchstart = skipDelay;
         </script>
 
         <script type="text/javascript">
