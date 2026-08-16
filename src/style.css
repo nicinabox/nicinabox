@@ -17,6 +17,12 @@
     }
 }
 
+@layer base {
+    a {
+        @apply border-b-2 transition-all border-gray-300 dark:border-gray-700 hover:border-yellow-500 dark:hover:text-yellow-400/80;
+    }
+}
+
 @utility animate-reveal {
     position: relative;
     top: 0;
@@ -24,7 +30,7 @@
 }
 
 @utility animate-delay-* {
-    animation-delay: --value([ *]);
+    animation-delay: --value([*]);
     animation-delay: calc(--value(integer) * 1ms);
 }
 
